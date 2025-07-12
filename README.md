@@ -42,6 +42,7 @@ A modern, responsive website for Dot Web Hosting company built with Next.js, Typ
 - **Dark Mode**: Full support for light/dark themes
 - **Glassmorphism**: Modern glass-like UI effects
 - **Framer Motion Animations**: Smooth transitions and interactive UI
+- **Contact Page**: Includes an interactive FAQ section with expandable/collapsible questions and smooth animations for better user experience.
 
 ## 🛠️ Tech Stack
 

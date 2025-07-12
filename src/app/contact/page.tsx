@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -50,7 +51,7 @@ const ContactPage = () => {
       icon: Clock,
       title: 'Business Hours',
       value: '24/7 Support',
-      description: 'We&apos;re here to help anytime'
+      description: 'We\'re here to help anytime'
     }
   ];
 
@@ -63,6 +64,26 @@ const ContactPage = () => {
     'Hosting Plans',
     'Other'
   ];
+
+  // FAQ data
+  const faqs = [
+    {
+      question: 'How quickly do you respond to support requests?',
+      answer: 'We typically respond to all support requests within 2-4 hours during business hours. For urgent technical issues, we provide 24/7 support.'
+    },
+    {
+      question: 'Can I upgrade or downgrade my hosting plan?',
+      answer: 'Yes, you can upgrade or downgrade your hosting plan at any time. Changes are typically processed within 24 hours with no downtime.'
+    },
+    {
+      question: 'Do you offer refunds?',
+      answer: 'We offer a 30-day money-back guarantee on all hosting plans. If you\'re not satisfied, we\'ll provide a full refund.'
+    }
+  ];
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const toggleFaq = (idx: number) => {
+    setExpandedFaq(expandedFaq === idx ? null : idx);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -293,33 +314,44 @@ const ContactPage = () => {
           </div>
 
           <div className="space-y-6">
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                How quickly do you respond to support requests?
-              </h3>
-              <p className="text-gray-600">
-                We typically respond to all support requests within 2-4 hours during business hours. 
-                For urgent technical issues, we provide 24/7 support.
-              </p>
-            </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                Can I upgrade or downgrade my hosting plan?
-              </h3>
-              <p className="text-gray-600">
-                Yes, you can upgrade or downgrade your hosting plan at any time. 
-                Changes are typically processed within 24 hours with no downtime.
-              </p>
-            </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                Do you offer refunds?
-              </h3>
-              <p className="text-gray-600">
-                We offer a 30-day money-back guarantee on all hosting plans. 
-                If you&apos;re not satisfied, we&apos;ll provide a full refund.
-              </p>
-            </div>
+            {faqs.map((faq, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: idx * 0.05 }}
+                className="bg-gray-50 rounded-lg overflow-hidden border border-gray-200"
+              >
+                <button
+                  onClick={() => toggleFaq(idx)}
+                  className="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                >
+                  <span className="text-lg font-semibold text-gray-900 pr-4">{faq.question}</span>
+                  <span className="ml-2">
+                    {expandedFaq === idx ? (
+                      <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" /></svg>
+                    ) : (
+                      <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                    )}
+                  </span>
+                </button>
+                <AnimatePresence>
+                  {expandedFaq === idx && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 py-4 text-gray-700">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

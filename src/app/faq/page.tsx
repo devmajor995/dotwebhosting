@@ -106,6 +106,16 @@ const FAQPage = () => {
           answer: 'If your payment fails, we\'ll send you multiple reminders. Your hosting service will continue for a grace period, but we recommend updating your payment method to avoid service interruption.'
         }
       ]
+    },
+    {
+      title: 'WHMCS Integration',
+      icon: HelpCircle,
+      items: [
+        {
+          question: 'How do I integrate WHMCS with my reseller hosting?',
+          answer: 'To integrate WHMCS with your reseller hosting, log in to your WHMCS admin area using the license provided with your DotResell plan. Go to Setup > Products/Services > Servers and add your hosting server (e.g., cPanel/WHM) using the API credentials. Then, configure your hosting products and payment gateways. For a step-by-step guide, see our WHMCS Integration Guide in the Support Center.'
+        }
+      ]
     }
   ];
 

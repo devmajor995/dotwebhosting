@@ -44,7 +44,8 @@ const SupportPage = () => {
         'Upgrading your hosting plan',
         'Managing databases',
         'Setting up SSL certificates',
-        'Backup and restore procedures'
+        'Backup and restore procedures',
+        'Integrating WHMCS with your reseller hosting'
       ]
     },
     {

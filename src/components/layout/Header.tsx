@@ -27,7 +27,6 @@ const Header = () => {
     { name: 'Domains', href: '/domains' },
     { name: 'Hosting', href: '/plans' },
     { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
     { 
       name: 'Pages', 
       href: '#',
@@ -39,6 +38,7 @@ const Header = () => {
       ]
     },
     { name: 'Support', href: '/support' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (

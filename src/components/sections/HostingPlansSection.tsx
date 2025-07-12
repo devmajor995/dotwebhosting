@@ -148,10 +148,13 @@ const HostingPlansSection = () => {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center space-x-2 bg-gray-900 text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200"
+            className="inline-block"
           >
-            <span>Contact Sales</span>
-            <span>→</span>
+            <span className="sr-only">Contact Sales</span>
+            <button className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-green-500 text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:from-blue-700 hover:to-green-600 transition-all duration-200 transform hover:scale-105">
+              <span>Contact Sales</span>
+              <span className="ml-2">→</span>
+            </button>
           </Link>
         </div>
       </div>
