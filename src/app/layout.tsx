@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
+import BackToTop from '@/components/ui/BackToTop'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -47,6 +48,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
             {children}
+            <BackToTop />
           </div>
         </ThemeProvider>
       </body>
